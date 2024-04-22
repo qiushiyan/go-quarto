@@ -1,3 +1,3 @@
-module github.com/qiushiyan/quarto
+module github.com/qiushiyan/go-quarto
 
 go 1.22.1
