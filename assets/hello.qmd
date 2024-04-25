@@ -1,0 +1,19 @@
+---
+title: "Hello Quarto"
+format: pdf
+knitr:
+    opts_chunk:
+      echo: false
+params:
+    n: 50
+---
+
+Hello Quarto
+
+```{r}
+hist(rnorm(params$n), main = "Plot")
+```
+
+```{r}
+Sys.sleep(10)
+```

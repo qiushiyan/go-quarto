@@ -5,6 +5,8 @@ For more information on Quarto, see the project GitHub repositories at https://g
 
 # Example Usage
 
-	quarto.Render(context.Background(), "example.md")
+	quarto.Render(context.Background(), "example.qmd", &Config{
+					Output: "output/example.pdf",
+	})
 */
 package quarto
