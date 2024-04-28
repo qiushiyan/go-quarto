@@ -13,7 +13,3 @@ Hello Quarto
 ```{r}
 hist(rnorm(params$n), main = "Plot")
 ```
-
-```{r}
-Sys.sleep(10)
-```

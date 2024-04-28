@@ -12,9 +12,24 @@ var ErrQuartoNotFound = errors.New(
 	"Quarto command-line tools path not found! Please make sure you have installed and added Quarto to your PATH or set the QUARTO_PATH environment variable",
 )
 
+func Version() (string, error) {
+	quarto := findQuarto()
+	if quarto == "" {
+		return "", ErrQuartoNotFound
+	}
+
+	cmd := exec.Command(quarto, "--version")
+	output, err := cmd.Output()
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimSpace(string(output)), nil
+}
+
 func findQuarto() string {
-	pathEnv := os.Getenv("QUARTO_PATH")
-	if pathEnv == "" {
+	p := os.Getenv("QUARTO_PATH")
+	if p == "" {
 		cmd := exec.Command("which", "quarto")
 		output, err := cmd.Output()
 		if err != nil {
@@ -25,6 +40,6 @@ func findQuarto() string {
 		return val
 	}
 
-	return pathEnv
+	return p
 
 }
